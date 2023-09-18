@@ -149,3 +149,5 @@ Console.WriteLine(ProgrammaEventi.StampaEventi(programma.CercaData(dataDaCercare
 // elimino tutti gli eventi del programma
 
 programma.SvuotaEventi();
+Console.WriteLine("Hai svuotato correttamente tutti gli eventi dal programma!");
+

@@ -58,6 +58,7 @@ namespace csharp_gestore_eventi
             this.Prezzo = prezzo;
         }
 
+
         // METODI
 
         public string DataOraFormattata()
