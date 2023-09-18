@@ -22,7 +22,7 @@ namespace csharp_gestore_eventi
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentNullException($"Il campo {titolo} non può essere vuoto");
+                    throw new ArgumentNullException(null, "Il campo \"Titolo\" non può essere vuoto!");
                 } else
                 {
                     this.titolo = value;
