@@ -132,7 +132,6 @@ for (int i = 0; i < numeroEventi; i++)
 
     Console.WriteLine($"Ecco il tuo programma eventi: {programma.ToString()}");
 
-    Console.WriteLine();
 
    // chiedo all'utente una data per sapere quali eventi ci saranno
 
@@ -147,4 +146,4 @@ if (!DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", null, System.Globa
 Console.WriteLine(ProgrammaEventi.StampaEventi(programma.CercaData(dataDaCercare)));
 
 
-
+programma.SvuotaEventi();

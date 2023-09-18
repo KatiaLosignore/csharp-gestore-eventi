@@ -74,6 +74,7 @@ namespace csharp_gestore_eventi
 
         public List<Evento> CercaData(DateTime data)
         {
+
            return this.Eventi.FindAll(e => e.Data == data);
             
         }
@@ -88,7 +89,7 @@ namespace csharp_gestore_eventi
             
             foreach(Evento evento in eventi)
             {
-                risultato += $"\r\n\t{index}. {evento.Titolo} - {evento.Data}";
+                risultato += $"\r\n\t{index}. {evento.Data.ToString("dd/MM/yyyy")} - {evento.Titolo}";
                 index++;
 
             }
@@ -113,10 +114,10 @@ namespace csharp_gestore_eventi
 
         public override string ToString()
         {
-            string res = StampaEventi(Eventi);
-            res += $"Nome programma evento: {this.Titolo} : \n";
+            string res =$" {StampaEventi(Eventi)}";
 
             return res;
+
         }
     }
 
