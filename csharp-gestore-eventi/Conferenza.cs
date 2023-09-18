@@ -63,7 +63,7 @@ namespace csharp_gestore_eventi
 
         public string DataOraFormattata()
         {
-            return Data.ToString("dd/MM/yyyy HH:mm");
+            return Data.ToString("dd/MM/yyyy");
         }
 
         public string PrezzoFormattato()

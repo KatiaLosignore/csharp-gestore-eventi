@@ -46,7 +46,7 @@ evento.PrenotaPosti(postiDaPrenotare);
 
 Console.WriteLine($"\r\nNumero di posti prenotati: {evento.PostiPrenotati}");
 
-int differenzaPosti = (  evento.CapienzaMax  - evento.PostiPrenotati );
+int differenzaPosti = ( evento.CapienzaMax  - evento.PostiPrenotati );
 
 Console.WriteLine($"Numero di posti disponibili: {differenzaPosti}");
 
@@ -151,3 +151,56 @@ Console.WriteLine(ProgrammaEventi.StampaEventi(programma.CercaData(dataDaCercare
 programma.SvuotaEventi();
 Console.WriteLine("Hai svuotato correttamente tutti gli eventi dal programma!");
 
+// BONUS
+
+Console.WriteLine("Aggiungi una Conferenza");
+
+// definisco i dati della conferenza chiedendoli all'utente
+Console.Write("Inserisci il nome della conferenza: ");
+string titoloConferenza = Console.ReadLine();
+
+Console.Write("Inserisci la data della conferenza (dd/MM/yyyy): ");
+DateTime dataConferenza = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
+
+Console.Write("Inserisci il numero di posti per la conferenza: ");
+int postiMax = int.Parse(Console.ReadLine());
+
+Console.Write("Inserisci il relatore della conferenza: ");
+string relatore = Console.ReadLine();
+
+Console.Write("Inserisci il prezzo del biglietto della conferenza: ");
+double prezzo = double.Parse(Console.ReadLine());
+
+
+try
+{
+
+// istanzio la conferenza con i dati precedentemente passati dall'utente e la ritorno
+    Conferenza conferenza = new Conferenza(titoloConferenza, dataConferenza, postiMax, relatore, prezzo);
+    programma.AggiungiEvento(conferenza);
+
+    Console.WriteLine($"Conferenza creata con successo: {conferenza}");
+
+    // creazione menu per scelta prenotazioni/disdette
+    Console.WriteLine($"Ci sono {programma.NumeroEventi()} eventi: ");
+
+    for (int i = 0; i < programma.NumeroEventi(); i++)
+    {
+        Console.WriteLine($"{i + 1}° {programma.Eventi[i]};");
+    }
+    Console.Write("A quale di questi vuoi accedere per prenotare/disdire: ");
+    int eventoUtente = int.Parse(Console.ReadLine());
+
+    if (eventoUtente <= 0 || eventoUtente > programma.NumeroEventi())
+    {
+        Console.WriteLine("Numero evento non valido!");
+    }
+    else
+    {
+        Console.WriteLine($"Evento: {programma.Eventi[eventoUtente - 1]}");
+    }
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
