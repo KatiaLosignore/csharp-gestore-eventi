@@ -41,6 +41,26 @@ namespace csharp_gestore_eventi
             this.Eventi = new List<Evento>();
         }
 
+        public ProgrammaEventi()
+        {
+            Console.Write("Inserisci il nome del tuo programma Eventi: ");
+
+            while (true)
+            {
+                try
+                {
+                    this.Titolo = Console.ReadLine();
+                    this.Eventi = new List<Evento>();
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write("Riprova ad inserire il dato: ");
+                }
+            }
+        }
+
 
         // METODI
 

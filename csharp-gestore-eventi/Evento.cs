@@ -54,11 +54,8 @@ namespace csharp_gestore_eventi
             get { return this.capienzaMax; }
         }
 
-        private int postiPrenotati;
-        public int PostiPrenotati
-        {
-            get { return this.postiPrenotati; }
-        }
+        private int postiPrenotati { get; set; }
+
 
         // COSTRUTTORE
 
@@ -73,6 +70,38 @@ namespace csharp_gestore_eventi
 
             this.postiPrenotati = 0;
 
+        }
+
+        public Evento(int index)
+        {
+            Console.Write($"\r\nInserisci il nome del {{index}}° evento: ");
+            string titoloEvento = Console.ReadLine();
+
+            this.Titolo = titoloEvento;
+
+            Console.Write("Inserisci la data dell'evento (gg/mm/yyy): ");
+
+            if (!DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime data))
+            {
+                Console.WriteLine("Data non valida. Il programma verrà chiuso.");
+                return;
+            }
+           
+            this.Data = data;
+
+            Console.Write("Inserisci il numero di posti totali: ");
+
+            int numeroPosti;
+
+            while (!int.TryParse(Console.ReadLine(), out numeroPosti))
+                Console.WriteLine("Inserisci un numero!");
+
+            if (capienzaMax <= 0)
+                throw new ArgumentException("La capienza massima deve essere un numero positivo.");
+            this.capienzaMax = numeroPosti;
+
+
+            this.postiPrenotati = 0;
         }
 
         // METODI

@@ -2,6 +2,7 @@
 using csharp_gestore_eventi;
 
 
+
 Console.WriteLine("Benvenuto nel gestore di eventi!");
 Console.WriteLine();
 
@@ -89,7 +90,27 @@ do
 
 } while (scelta == "si");
 
+Console.WriteLine("------------------------------");
 
+// Programma Eventi
+
+// istanzio la classe ProgrammaEventi
+
+ProgrammaEventi programma = new ProgrammaEventi();
+
+Console.Write("Indica il numero di eventi da inserire: ");
+
+int numeroEventi;
+
+while(!int.TryParse(Console.ReadLine(),out numeroEventi))
+{
+    Console.WriteLine("Inserisci un numero!");
+}
+
+for (int i = 0; i < numeroEventi; i++)
+{
+
+}
 
 
 
