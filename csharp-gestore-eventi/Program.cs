@@ -32,6 +32,23 @@ Evento evento = new Evento(titolo, data, numeroPosti);
 Console.WriteLine($"Hai creato un evento: {evento}");
 
 
+// chiedo all’utente se e quante prenotazioni vuole fare e provare ad effettuarle.
+
+Console.Write("Quanti posti vuoi prenotare?: ");
+
+int postiDaPrenotare;
+
+while (!int.TryParse(Console.ReadLine(), out postiDaPrenotare))
+    Console.WriteLine("Inserisci un numero");
+
+evento.PrenotaPosti(postiDaPrenotare);
+
+Console.WriteLine($"Numero di posti prenotati: {evento.PostiPrenotati}");
+
+int differenzaPosti = (  evento.CapienzaMax  - evento.PostiPrenotati );
+
+Console.WriteLine($"Numero di posti disponibili: {differenzaPosti}");
+
 
 
 
