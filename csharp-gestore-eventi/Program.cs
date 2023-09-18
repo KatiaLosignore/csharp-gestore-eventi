@@ -150,10 +150,12 @@ Console.WriteLine(ProgrammaEventi.StampaEventi(programma.CercaData(dataDaCercare
 
 programma.SvuotaEventi();
 Console.WriteLine("Hai svuotato correttamente tutti gli eventi dal programma!");
+Console.WriteLine();
 
 // BONUS
 
 Console.WriteLine("Aggiungi una Conferenza");
+Console.WriteLine();
 
 // definisco i dati della conferenza chiedendoli all'utente
 Console.Write("Inserisci il nome della conferenza: ");
@@ -175,11 +177,12 @@ double prezzo = double.Parse(Console.ReadLine());
 try
 {
 
-// istanzio la conferenza con i dati precedentemente passati dall'utente e la ritorno
+// istanzio la conferenza con i dati passati dall'utente
     Conferenza conferenza = new Conferenza(titoloConferenza, dataConferenza, postiMax, relatore, prezzo);
     programma.AggiungiEvento(conferenza);
 
     Console.WriteLine($"Conferenza creata con successo: {conferenza}");
+    Console.WriteLine();
 
     // creazione menu per scelta prenotazioni/disdette
     Console.WriteLine($"Ci sono {programma.NumeroEventi()} eventi: ");
