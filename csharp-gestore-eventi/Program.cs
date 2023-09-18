@@ -146,4 +146,6 @@ if (!DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", null, System.Globa
 Console.WriteLine(ProgrammaEventi.StampaEventi(programma.CercaData(dataDaCercare)));
 
 
+// elimino tutti gli eventi del programma
+
 programma.SvuotaEventi();
