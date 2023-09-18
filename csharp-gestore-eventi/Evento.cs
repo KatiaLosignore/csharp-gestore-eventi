@@ -54,7 +54,7 @@ namespace csharp_gestore_eventi
             get { return this.capienzaMax; }
         }
 
-        private int postiPrenotati { get; set; }
+        public int PostiPrenotati { get; private set; }
 
 
         // COSTRUTTORE
@@ -68,16 +68,17 @@ namespace csharp_gestore_eventi
                 throw new ArgumentException("La capienza massima deve essere un numero positivo.");
             this.capienzaMax = capienzaMax;
 
-            this.postiPrenotati = 0;
+            this.PostiPrenotati = 0;
 
         }
 
         public Evento(int index)
         {
-            Console.Write($"\r\nInserisci il nome del {{index}}° evento: ");
+            Console.Write($"\r\nInserisci il nome del {index}° evento: ");
             string titoloEvento = Console.ReadLine();
 
             this.Titolo = titoloEvento;
+            index++;
 
             Console.Write("Inserisci la data dell'evento (gg/mm/yyy): ");
 
@@ -96,12 +97,12 @@ namespace csharp_gestore_eventi
             while (!int.TryParse(Console.ReadLine(), out numeroPosti))
                 Console.WriteLine("Inserisci un numero!");
 
-            if (capienzaMax <= 0)
-                throw new ArgumentException("La capienza massima deve essere un numero positivo.");
+            if (numeroPosti <= 0)
+                throw new ArgumentException("Il numero posti deve essere un numero positivo.");
             this.capienzaMax = numeroPosti;
 
 
-            this.postiPrenotati = 0;
+            this.PostiPrenotati = 0;
         }
 
         // METODI
@@ -114,10 +115,10 @@ namespace csharp_gestore_eventi
             if (postiDaPrenotare <= 0)
                throw new ArgumentException("Il numero dei posti da prenotare deve essere al positivo");
             
-            if(postiPrenotati + postiDaPrenotare > capienzaMax)
+            if(PostiPrenotati + postiDaPrenotare > capienzaMax)
                 throw new InvalidOperationException("Non ci sono abbastanza posti diponibili per effettuare la prenotazione!");
 
-            postiPrenotati += postiDaPrenotare;
+            PostiPrenotati += postiDaPrenotare;
         }
 
         public void DisdiciPosti (int postiDaDisdire)
@@ -128,16 +129,16 @@ namespace csharp_gestore_eventi
             if (postiDaDisdire <= 0)
                 throw new ArgumentException("Il numero dei posti da disdire deve essere al positivo");
 
-            if (postiDaDisdire > postiPrenotati)
+            if (postiDaDisdire > PostiPrenotati)
                 throw new InvalidOperationException("Non ci sono abbastanza posti prenotati da disdire!");
 
-            postiPrenotati -= postiDaDisdire;
+            PostiPrenotati -= postiDaDisdire;
         }
 
 
         public override string ToString()
         {
-            return  $"{Data.ToString("dd/MM/yyyy")} - {Titolo}";
+            return  $"{this.Data.ToString("dd/MM/yyyy")} - {this.Titolo}";
         }
 
 

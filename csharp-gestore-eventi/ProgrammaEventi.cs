@@ -113,8 +113,8 @@ namespace csharp_gestore_eventi
 
         public override string ToString()
         {
-            string res = $"Nome programma evento: {this.Titolo} : \n";
-            res += StampaEventi(Eventi);
+            string res = StampaEventi(Eventi);
+            res += $"Nome programma evento: {this.Titolo} : \n";
 
             return res;
         }

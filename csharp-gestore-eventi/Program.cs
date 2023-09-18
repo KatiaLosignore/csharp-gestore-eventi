@@ -109,8 +109,42 @@ while(!int.TryParse(Console.ReadLine(),out numeroEventi))
 
 for (int i = 0; i < numeroEventi; i++)
 {
+    try
+    {
+        Evento eventoUtente = new Evento(i + 1);
 
+        programma.AggiungiEvento(eventoUtente);
+
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+        Console.WriteLine("Riprova nuovamente!");
+        i--;
+    }
 }
+
+
+
+// Informazioni Programma Eventi
+
+    Console.WriteLine($"Il numero di eventi nel programma è: {programma.NumeroEventi()}");
+
+    Console.WriteLine($"Ecco il tuo programma eventi: {programma.ToString()}");
+
+    Console.WriteLine();
+
+   // chiedo all'utente una data per sapere quali eventi ci saranno
+
+    Console.Write("\r\nInserisci una data per sapere che eventi ci saranno il (gg/mm/yyyy): ");
+
+
+if (!DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime dataDaCercare))
+{
+    Console.WriteLine("Data non valida. Inserisci Formato Valido! (gg/mm/yyyy): ");
+}
+
+Console.WriteLine(ProgrammaEventi.StampaEventi(programma.CercaData(dataDaCercare)));
 
 
 
