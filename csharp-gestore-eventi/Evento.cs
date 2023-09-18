@@ -83,12 +83,34 @@ namespace csharp_gestore_eventi
                 throw new InvalidOperationException("Non è possibile prenotare posti per un evento passato.");
 
             if (postiDaPrenotare <= 0)
-               throw new ArgumentException("Il numero dei posti da prenotare ddeve essere al positivo");
+               throw new ArgumentException("Il numero dei posti da prenotare deve essere al positivo");
             
             if(postiPrenotati + postiDaPrenotare > capienzaMax)
                 throw new InvalidOperationException("Non ci sono abbastanza posti diponibili per effettuare la prenotazione!");
 
             postiPrenotati += postiDaPrenotare;
         }
+
+        public void DisdiciPosti (int postiDaDisdire)
+        {
+            if (Data < DateTime.Now)
+                throw new InvalidOperationException("Non è possibile disdire posti per un evento passato.");
+
+            if (postiDaDisdire <= 0)
+                throw new ArgumentException("Il numero dei posti da disdire deve essere al positivo");
+
+            if (postiDaDisdire > postiPrenotati)
+                throw new InvalidOperationException("Non ci sono abbastanza posti prenotati da disdire!");
+
+            postiPrenotati -= postiDaDisdire;
+        }
+
+
+        public override string ToString()
+        {
+            return  $"{Data.ToString("dd/MM/yyyy")} - {Titolo}";
+        }
+
+
     }
 }
