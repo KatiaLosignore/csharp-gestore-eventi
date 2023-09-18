@@ -75,7 +75,7 @@ namespace csharp_gestore_eventi
 
         }
 
-        // METODO
+        // METODI
 
         public void PrenotaPosti (int postiDaPrenotare)
         {
