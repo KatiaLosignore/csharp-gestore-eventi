@@ -9,6 +9,8 @@ namespace csharp_gestore_eventi
 {
     public class Evento
     {
+        // ATTRIBUTI
+
         private string titolo;
         public string Titolo 
         { 
@@ -58,5 +60,35 @@ namespace csharp_gestore_eventi
             get { return this.postiPrenotati; }
         }
 
+        // COSTRUTTORE
+
+        public Evento(string titolo, DateTime data, int capienzaMax)
+        {
+            this.Titolo = titolo;
+            this.Data = data;
+
+            if (capienzaMax <= 0) 
+                throw new ArgumentException("La capienza massima deve essere un numero positivo.");
+            this.capienzaMax = capienzaMax;
+
+            this.postiPrenotati = 0;
+
+        }
+
+        // METODO
+
+        public void PrenotaPosti (int postiDaPrenotare)
+        {
+            if (Data < DateTime.Now)
+                throw new InvalidOperationException("Non è possibile prenotare posti per un evento passato.");
+
+            if (postiDaPrenotare <= 0)
+               throw new ArgumentException("Il numero dei posti da prenotare ddeve essere al positivo");
+            
+            if(postiPrenotati + postiDaPrenotare > capienzaMax)
+                throw new InvalidOperationException("Non ci sono abbastanza posti diponibili per effettuare la prenotazione!");
+
+            postiPrenotati += postiDaPrenotare;
+        }
     }
 }
