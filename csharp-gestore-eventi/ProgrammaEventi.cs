@@ -32,9 +32,10 @@ namespace csharp_gestore_eventi
             }
         }
 
-        // COSTRUTTORE
         public List<Evento> Eventi { get; set; }
 
+
+        // COSTRUTTORE
         public ProgrammaEventi(string titolo)
         {
             this.Titolo = titolo;
